@@ -25,15 +25,12 @@ jobs:
         run: |
           npm install
           npm run build
-          
-      - name: Zip artifact for deployment
-        run: zip release.zip ./build/* -r
       
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: react-app
-          path: release.zip
+          path: './build'
 
   deploy:
     runs-on: ubuntu-latest
@@ -49,9 +46,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: react-app
-      - name: Unzip artifact for deployment
-        run: unzip release.zip
-      
+     
       - name: Login to Azure
         uses: azure/login@v1
         with:
