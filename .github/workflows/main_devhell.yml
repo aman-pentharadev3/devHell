@@ -60,5 +60,5 @@ jobs:
         with:
           app-name: 'devHell'
           slot-name: 'Production'
-          package: './build'
+          package: './'
           
